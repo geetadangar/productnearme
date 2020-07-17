@@ -11,16 +11,16 @@
 // require("@rails/activestorage").start()
 // require("channels")
 
-// $(function() {
-//   $("#product th a, #product").live("click", function() {
-//     $.getScript(this.href);
-//     return false;
-//   });
-//   $("#product_search input").keyup(function() {
-//     $.get($("#product_search").attr("action"), $("#product_search").serialize(), null, "script");
-//     return false;
-//   });
-// });
+$(function() {
+  $("#product th a, #product").live("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#product_search input").keyup(function() {
+    $.get($("#product_search").attr("action"), $("#product_search").serialize(), null, "script");
+    return false;
+  });
+});
 
 
 

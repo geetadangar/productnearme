@@ -6,18 +6,25 @@ ruby '2.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# gem 'sqlite3', '~> 1.4'
 #devise gem
 gem 'devise'
 #bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'  
 # gem 'sass-rails', '>= 3.2'
 #searching
+#geocode
+gem 'geocoder'
+#elastic-search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'tire'
+
 # gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # gem 'jquery-rails'
 # gem 'pg_search'
 #pg 
-# gem 'pg'
+ gem 'pg'
 
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'jquery-rails'

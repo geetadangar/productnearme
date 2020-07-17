@@ -14,8 +14,14 @@ class ProductController < ApplicationController
  #    end
  #  end
   end
+#   def sort_column
+#   Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
+# end
   def home
-  @product = Product.all 
+     # @products = Product.order(params[:sort] + ' ' + params[:direction])
+   # @product = Product.all.order("created_at DESC")
+    # default_scope { order(created_at: :desc)}
+  # @product = Product.all 
 	@product = Product.search(params[:search])
   @category = Category.all
   end

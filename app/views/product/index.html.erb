@@ -31,7 +31,12 @@
 </table>
 
 <br>
-
+<%= form_tag product_index_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
 <%= form_tag product_index_path, :method => 'get', :id => "products_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>

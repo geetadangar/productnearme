@@ -1,5 +1,5 @@
 require_relative 'boot'
-
+# Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
