@@ -10,7 +10,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 #devise gem
 gem 'devise'
 #bootstrap
-gem 'bootstrap-sass', '~> 3.3.6'  
+gem 'bootstrap-sass', '~> 3.4.1'  
 # gem 'sass-rails', '>= 3.2'
 #searching
 #geocode
