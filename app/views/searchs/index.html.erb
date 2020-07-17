@@ -1,0 +1,15 @@
+<%= text_field_tag :search, "", class: "search_product" %>
+
+      <tbody class="product_tbody_content">
+           <%= render 'index_content' %>
+      </tbody>
+
+
+      <script type="text/javascript">
+           $(".search_product").keyup(function() {
+               $.ajax({
+                  url: '/product/search',
+                  data: {search: $(this).serialize()}
+               });
+           });
+      </script>
