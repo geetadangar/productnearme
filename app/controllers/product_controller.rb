@@ -5,6 +5,7 @@ class ProductController < ApplicationController
  def index
 	  @product = Product.all 
 	  @product = Product.search(params[:search])
+
 	  
 	# if params[:search]
  #      @product = Product.search(params[:search]).order("created_at DESC")
@@ -12,6 +13,11 @@ class ProductController < ApplicationController
  #      @product = Product.all.order('created_at DESC')
  #    end
  #  end
+  end
+  def home
+  @product = Product.all 
+	@product = Product.search(params[:search])
+  @category = Category.all
   end
 
   def new

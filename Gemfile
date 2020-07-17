@@ -9,6 +9,9 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'sqlite3', '~> 1.4'
 #devise gem
 gem 'devise'
+#bootstrap
+gem 'bootstrap-sass', '~> 3.3.6'  
+# gem 'sass-rails', '>= 3.2'
 #searching
 # gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # gem 'jquery-rails'

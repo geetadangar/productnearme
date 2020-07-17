@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+<!-- <h1>product</h1> -->
+<html>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">ProductNearMe</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><%= link_to 'home', home_path %></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to 'New product', new_product_path %></li>
+      <li><%= link_to 'login', user_session_path %></li>
+    </ul>
+    <form class="navbar-form navbar-left" action="/action_page.php">
+      <div class="input-group">
+        <%= select_tag "category_id", options_from_collection_for_select(@category, 'id', 'name') %>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+      </div>
+    </form>
+  </div>
+</nav>
+</html>
+
+
+<%= form_tag home_path, :method => 'get', :id => "products_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <!-- <div id="product"><%# render 'product' %></div> -->
+<% end %>
+
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>description</th>
+      <th>price</th>
+      <th>category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%# @product.each do |product| %>
+    <% Product.all.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.Description %></td>
+        <td><%= product.price %></td>
+        <td><%= product.category.name %></td>
+        
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%# form_tag product_index_path, :method => :post, :id => "SearchForm" do %>
+    <%# text_field_tag :search, params[:search], placeholder: 'Search your favourite products or brands', :autocomplete => :off, :id => 'SearchSearch'  %> 
+    <%# image_submit_tag('nav_bar/search.png', title: 'Search', class: 'search_submit', data: { "placement" => "bottom" }) %>
+    <%# submit_tag "Search", :name => nil %>
+<%# end %>  
+<%#link_to 'Add New product', new_product_path %>
+<%#link_to 'login', user_session_path %>
+<span class="nav-item"><span class="nav-text"><i class="icp-flyout-flag icp-flyout-flag-in"></i>You are shopping on ProductNearMe.in.</span></span>                                             

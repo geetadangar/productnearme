@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   # devise_for :users
  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords" }
- root 'product#index'
+ # root 'product#index'
+ root 'product#home'
+ get "/index(/:id)", to: "product#index", as: :index
+ get "/home(/:id)", to: "product#home", as: :home
  match 'search(/:search)', :to => 'product#search', :as => :search, via: [:get, :post]
 
 
  # match 'search(/:search)', :to => 'searches#index', :as => :search, via: [:get, :post]
  resources :product
  resources :searches
-	 # get 'search'
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
