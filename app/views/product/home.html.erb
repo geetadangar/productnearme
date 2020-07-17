@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
+<style>
+body {
+      background: aliceblue;
+    }
+  </style>
 <!-- <h1>product</h1> -->
 <html>
 <nav class="navbar navbar-inverse">
@@ -13,7 +18,7 @@
     </ul>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to 'New product', new_product_path %></li>
+      <li><%= link_to 'Add New product', new_product_path %></li>
       <li><%= link_to 'login', user_session_path %></li>
     </ul>
     <form class="navbar-form navbar-left" action="/action_page.php">
@@ -31,8 +36,41 @@
     </form>
   </div>
 </nav>
-</html>
 
+<div class="container">  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="1.jpg" alt="Los Angeles" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="1.jpg" alt="Chicago" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="1.jpg" alt="New york" style="width:100%;">
+      </div>
+    </div>
+
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+</html>
 
 <%= form_tag home_path, :method => 'get', :id => "products_search" do %>
   <p>
@@ -44,9 +82,20 @@
 
 
 
+<%= form_tag product_index_path, :method => :post, :id => "SearchForm" do %>
+    <%= text_field_tag :search, params[:search], placeholder: 'Search your favourite products or brands', :autocomplete => :off, :id => 'SearchSearch'  %> 
+    <%# image_submit_tag('nav_bar/search.png', title: 'Search', class: 'search_submit', data: { "placement" => "bottom" }) %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>  
+<%#link_to 'Add New product', new_product_path %>
+<%#link_to 'login', user_session_path %>
+                          
 
 
-<table>
+</body>
+</html>
+<div class="container">
+<table class="table", table-striped>
   <thead>
     <tr>
       <th>Name</th>
@@ -70,15 +119,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
-
-
-<%# form_tag product_index_path, :method => :post, :id => "SearchForm" do %>
-    <%# text_field_tag :search, params[:search], placeholder: 'Search your favourite products or brands', :autocomplete => :off, :id => 'SearchSearch'  %> 
-    <%# image_submit_tag('nav_bar/search.png', title: 'Search', class: 'search_submit', data: { "placement" => "bottom" }) %>
-    <%# submit_tag "Search", :name => nil %>
-<%# end %>  
-<%#link_to 'Add New product', new_product_path %>
-<%#link_to 'login', user_session_path %>
-<span class="nav-item"><span class="nav-text"><i class="icp-flyout-flag icp-flyout-flag-in"></i>You are shopping on ProductNearMe.in.</span></span>                                             
+<span class="nav-item"><span class="nav-text"><i class="icp-flyout-flag icp-flyout-flag-in"></i>You are shopping on ProductNearMe.in.</span></span>
