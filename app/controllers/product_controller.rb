@@ -22,7 +22,7 @@ class ProductController < ApplicationController
    # @product = Product.all.order("created_at DESC")
     # default_scope { order(created_at: :desc)}
   # @product = Product.all 
-	@product = Product.search(params[:search])
+	# @product = Product.search(params[:search])
   @category = Category.all
   end
 

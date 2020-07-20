@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :category
    default_scope { order(created_at: :desc)}
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  # include Elasticsearch::Model
+  # include Elasticsearch::Model::Callbacks
   
   # if search
   #   find(:all, :conditions => ['name LIKE ?', "%#{search}%"])

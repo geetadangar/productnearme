@@ -5,6 +5,9 @@ body {
     }
   </style>
 <!-- <h1>product</h1> -->
+
+
+<div class="nav-sprite" id="nav-packard-glow-loc-icon"></div>
  
 <html>
 <nav class="navbar navbar-inverse">
@@ -13,7 +16,7 @@ body {
       <a class="navbar-brand" href="#">ProductNearMe</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><%= link_to 'home', home_path %></li>
+      <li class="active"><%= link_to 'find by location', new_location_path %></li>
       <li><a href="#"></a></li>
       <li><a href="#"></a></li>
     </ul>
@@ -38,6 +41,10 @@ body {
   </div>
 </nav>
 
+
+
+
+
 <div class="container">  
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -49,15 +56,15 @@ body {
 
     <div class="carousel-inner">
       <div class="item active">
-        <img src="1.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="1.jpg" alt="image not found" style="width:100%;">
       </div>
 
       <div class="item">
-        <img src="1.jpg" alt="Chicago" style="width:100%;">
+        <img src="1.jpg" alt="image not found" style="width:100%;">
       </div>
     
       <div class="item">
-        <img src="1.jpg" alt="New york" style="width:100%;">
+        <img src="1.jpg" alt="image not found" style="width:100%;">
       </div>
     </div>
 
@@ -71,12 +78,21 @@ body {
     </a>
   </div>
 </div>
-</html>
+
+
+
 
 
 <%#link_to 'Add New product', new_product_path %>
 <%#link_to 'login', user_session_path %>
-              
+  
+   <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
+    <div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
+    <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
+  </div>
+</div>         
 
 
 </body>
@@ -112,5 +128,5 @@ body {
 </div>
 
 <br>
-<span class="nav-item"><span class="nav-text"><i class="icp-flyout-flag icp-flyout-flag-in"></i>You are shopping on ProductNearMe.in.</span></span>
+<span class="nav-item"><span class="nav-text"><i class="icp-flyout-flag icp-flyout-flag-in"></i>You are shopping on ProductNearMe.in</span></span>
 <%# render @product.desc %>
