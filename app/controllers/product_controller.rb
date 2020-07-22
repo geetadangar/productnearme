@@ -4,7 +4,8 @@ class ProductController < ApplicationController
     
 
  def index
-    @product = Product.search(params[:search]).order(sort_column + " " + sort_direction)
+    # @product = Product.search(params[:search]).order(sort_column + " " + sort_direction)
+    @product = Product.order(sort_column + " " + sort_direction)
 
   # @search = Product.search(params[:q])
   # @products = @search.result

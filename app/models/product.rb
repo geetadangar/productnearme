@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :category
-  def self.ransackable_attributes(auth_object = nil)
-    %w(name description)
-  end
+  # def self.ransackable_attributes(auth_object = nil)
+  #   %w(name description)
+  # end
    # default_scope { order(created_at: :desc)}
    # Product.order(:name)
    
@@ -72,9 +72,9 @@ class Product < ApplicationRecord
   # end
 
 
-  def self.search(search)
- basic_search(name: search, description: search, price: search).take(5) #-> uses textacular gem
-end
+#   def self.search(search)
+#  basic_search(name: search, description: search, price: search).take(5) #-> uses textacular gem
+# end
 
   # def self.search(search)
   #           if search
