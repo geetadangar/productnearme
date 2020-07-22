@@ -16,7 +16,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 #geocode
 gem 'geocoder'
 #use for sort and searching
-gem 'filterrific'
+# gem 'filterrific'
 #elastic-search
 # gem 'elasticsearch-model'
 # gem 'elasticsearch-rails'
@@ -28,8 +28,8 @@ gem 'filterrific'
 #pg 
  gem 'pg'
 
-gem 'will_paginate', '~> 3.1', '>= 3.1.6'
-gem 'jquery-rails'
+# gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+# gem 'jquery-rails'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
