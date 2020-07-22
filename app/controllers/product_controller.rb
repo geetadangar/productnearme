@@ -11,7 +11,7 @@ class ProductController < ApplicationController
   # @products = @search.result
   # @search.build_condition if @search.conditions.empty?
   # @search.build_sort if @search.sorts.empty?
-	  @product = Product.all 
+	  # @product = Product.all 
     # Product.includes( :item ).order( 'product.name DESC' )
     #   @products = Product.order(params[:sort])
 
@@ -39,6 +39,8 @@ class ProductController < ApplicationController
 #   Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
 # end
   def home
+    @product = Product.order(sort_column + " " + sort_direction)
+
      # @products = Product.order(params[:sort] + ' ' + params[:direction])
      # @product = Product.all.order("created_at DESC")
      # default_scope { order(created_at: :desc)}
@@ -66,7 +68,7 @@ class ProductController < ApplicationController
   end
 
 	def show
-   @product = Product.find_by_id(params[:id])
+   # @product = Product.find_by_id(params[:id])
 	end
 
   def edit
@@ -101,19 +103,29 @@ class ProductController < ApplicationController
    end
   
   private
+  def set_product
+      @product = Product.find(params[:id])
+    end
   def sortable_columns
     ["price"]
   end
   def find_product
     @product = Product.find(params[:id])
   end
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
-  end
+  # def sort_direction
+  #   %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  # end
 
+  #   def sort_column
+  #     Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  #   end
     def sort_column
-      Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
-    end
+    Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 
     def product_params
       # params.require(:product).permit(:name, :Description, :price, :category_id)

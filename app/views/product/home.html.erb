@@ -24,6 +24,7 @@ body {
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to 'Add New product', new_product_path %></li>
       <li><%= link_to 'login', user_session_path %></li>
+      <li><%= link_to "logout", destroy_user_session_path %></li>
     </ul>
     <form class="navbar-form navbar-left" action="/action_page.php">
       <div class="input-group">
@@ -117,28 +118,30 @@ body {
     <tr>
       <th>Name</th>
       <th>description</th>
-      <th>price</th>
+      <th><%= sortable "price" %></th>
       <th>category</th>
       <th colspan="3"></th>
-      <!-- <th><%# link_to "Price", :sort => "price" %></th>
-      <th><%# link_to "Name", :sort => "name" %></th>
-      <th><%# render @product.desc %></th> -->
     </tr>
   </thead>
 
   <tbody>
-    <%# @product.each do |product| %>
-    <% Product.all.each do |product| %>
+    <%# @product.each do |product| #Product.all.each do |product|%>
+   <% for product in @product %>
       <tr>
         <td><%= product.name %></td>
         <td><%= product.Description %></td>
-        <td><%= product.price %></td>
+        <td class="price"><%= number_to_currency(product.price) %></td>
+
         <td><%= product.category.name %></td>
-        
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <!-- <td><%# link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <td><%= button_to 'Destroy', product_path(product), method: :delete %></td>
         </tr>
     <% end %>
   </tbody>
 </table>
+
 </div>
 
 <br>
