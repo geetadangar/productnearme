@@ -50,7 +50,7 @@ production:
   <<: *default
   database: demo_production
   username: postgres
-  password: <%= ENV['payslip_DATABASE_PASSWORD'] %>
+  password: <%= ENV['postgres_DATABASE_PASSWORD'] %>
 
 
 # # SQLite. Versions 3.8.0 and up are supported.
