@@ -58,7 +58,6 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    ansi (1.5.0)
     autoprefixer-rails (9.8.5)
       execjs
     bcrypt (3.1.13)
@@ -87,33 +86,13 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
-    elasticsearch (7.8.0)
-      elasticsearch-api (= 7.8.0)
-      elasticsearch-transport (= 7.8.0)
-    elasticsearch-api (7.8.0)
-      multi_json
-    elasticsearch-model (7.1.0)
-      activesupport (> 3)
-      elasticsearch (> 1)
-      hashie
-    elasticsearch-rails (7.1.0)
-    elasticsearch-transport (7.8.0)
-      faraday (~> 1)
-      multi_json
     erubi (1.9.0)
     execjs (2.7.0)
-    faraday (1.0.1)
-      multipart-post (>= 1.2, < 3)
     ffi (1.13.1)
+    filterrific (5.2.1)
     geocoder (1.6.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    hashie (4.1.0)
-    hashr (0.0.22)
-    http-cookie (1.0.3)
-      domain_name (~> 0.5)
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
@@ -133,15 +112,11 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
-    mime-types (2.99.3)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
     msgpack (1.3.3)
-    multi_json (1.15.0)
-    multipart-post (2.1.1)
-    netrc (0.11.0)
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -189,10 +164,6 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rest-client (1.8.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
     rubyzip (2.3.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -226,22 +197,11 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tire (0.6.2)
-      activemodel (>= 3.0)
-      activesupport
-      ansi
-      hashr (~> 0.0.19)
-      multi_json (~> 1.3)
-      rake
-      rest-client (~> 1.6)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.7)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.4)
@@ -274,8 +234,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
-  elasticsearch-model
-  elasticsearch-rails
+  filterrific
   geocoder
   jbuilder (~> 2.7)
   jquery-rails
@@ -287,7 +246,6 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  tire
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

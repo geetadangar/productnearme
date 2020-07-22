@@ -1,9 +1,63 @@
 class Product < ApplicationRecord
   belongs_to :category
-   default_scope { order(created_at: :desc)}
+  def self.ransackable_attributes(auth_object = nil)
+    %w(name description)
+  end
+   # default_scope { order(created_at: :desc)}
+   # Product.order(:name)
+   
+#    def self.search(search)
+#   if search
+#     find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+#   else
+#     find(:all)
+#   end
+# end
+
   # include Elasticsearch::Model
   # include Elasticsearch::Model::Callbacks
-  
+ #  filterrific(
+ # default_filter_params: { sorted_by: 'created_at_desc' },
+ # available_filters: [
+ # :sorted_by,
+ # :search_query,
+ # :with_country_id,
+ # ]
+ # )
+#   filterrific(
+#   default_filter_params: { sorted_by: 'created_at_desc' },
+#   available_filters: %i[
+#     sorted_by
+#     with_price_lte
+#   ]
+# )
+# filterrific(
+#     default_settings: { sorted_by: 'created_at_desc' },
+#     filter_names: [
+#       :search_query,
+#       :with_approved,
+#       :with_category_id
+#     ]
+#   )
+
+#   scope :sorted_by, (lambda do |sort_option|
+
+#   direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+
+#   case sort_option.to_s
+#   when /^created_at_/
+#     order("product.created_at #{ direction }")
+#   when /^name_/
+#     order("product.name #{ direction }")
+#   else
+#     raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+#   end
+# end)
+
+
+#   scope :with_price_lte, (lambda do |price|
+#   where('price >= ?', price)
+# end)
   # if search
   #   find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
   # else
@@ -18,9 +72,9 @@ class Product < ApplicationRecord
   # end
 
 
-#   def self.search(search)
-#  basic_search(name: search, description: search, price: search).take(5) #-> uses textacular gem
-# end
+  def self.search(search)
+ basic_search(name: search, description: search, price: search).take(5) #-> uses textacular gem
+end
 
   # def self.search(search)
   #           if search

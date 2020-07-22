@@ -15,10 +15,12 @@ gem 'bootstrap-sass', '~> 3.3.6'
 #searching
 #geocode
 gem 'geocoder'
+#use for sort and searching
+gem 'filterrific'
 #elastic-search
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-gem 'tire'
+# gem 'elasticsearch-model'
+# gem 'elasticsearch-rails'
+# gem 'tire'
 
 # gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # gem 'jquery-rails'

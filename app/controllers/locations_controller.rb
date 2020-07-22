@@ -65,6 +65,10 @@ class LocationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  # def destroy
+  #   @location.destroy
+  #   redirect_to location_url, notice: 'location delete successfully'
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

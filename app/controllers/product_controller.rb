@@ -1,10 +1,30 @@
 class ProductController < ApplicationController
 	 before_action :set_product, only: [:show, :edit, :update, :destroy]
-	  # helper_method :sort_column, :sort_directio
+	  helper_method :sort_column, :sort_direction
+    
 
  def index
+    @product = Product.search(params[:search]).order(sort_column + " " + sort_direction)
+
+  # @search = Product.search(params[:q])
+  # @products = @search.result
+  # @search.build_condition if @search.conditions.empty?
+  # @search.build_sort if @search.sorts.empty?
 	  @product = Product.all 
-	  @product = Product.search(params[:search])
+    # Product.includes( :item ).order( 'product.name DESC' )
+    #   @products = Product.order(params[:sort])
+
+#  @filterrific = initialize_filterrific(
+#  Product,
+#  params[:filterrific]
+#  ) or return
+#  @product_params = @filterrific.find.page(params[:page])
+
+# respond_to do |format|
+#  format.html
+#  format.js
+ # end
+	   # @product = Product.search(params[:search])
 
 	  
 	# if params[:search]
@@ -12,15 +32,15 @@ class ProductController < ApplicationController
  #    else
  #      @product = Product.all.order('created_at DESC')
  #    end
- #  end
   end
+  
 #   def sort_column
 #   Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
 # end
   def home
      # @products = Product.order(params[:sort] + ' ' + params[:direction])
-   # @product = Product.all.order("created_at DESC")
-    # default_scope { order(created_at: :desc)}
+     # @product = Product.all.order("created_at DESC")
+     # default_scope { order(created_at: :desc)}
   # @product = Product.all 
 	# @product = Product.search(params[:search])
   @category = Category.all
@@ -71,16 +91,27 @@ class ProductController < ApplicationController
     @product.destroy
     redirect_to root_url, notice: 'product delete successfully'
   end
-   def search
-          @product = Product.search(params[:search].split("=").last)
-          respond_to :js
-      end
+   # def search
+   #        @product = Product.search(params[:search].split("=").last)
+   #        respond_to :js
+   #    end
+   def method1
 
+   end
   
   private
+  def sortable_columns
+    ["price"]
+  end
+  def find_product
+    @product = Product.find(params[:id])
+  end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
 
-    def set_product
-      @product = Product.find(params[:id])
+    def sort_column
+      Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
     end
 
     def product_params
