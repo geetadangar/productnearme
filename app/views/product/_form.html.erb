@@ -33,6 +33,7 @@
    <%= form.label :select_catagory%>
  </th>
  <td>
+  <%# form.text_field :category_id, :value => @product.category_id%>
    <%= select_tag "category_id", options_from_collection_for_select(@category, 'id', 'name') %>
  </td>
   </div>

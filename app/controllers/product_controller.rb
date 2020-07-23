@@ -4,9 +4,16 @@ class ProductController < ApplicationController
     
 
  def index
-    # @product = Product.search(params[:search]).order(sort_column + " " + sort_direction)
-    @product = Product.order(sort_column + " " + sort_direction)
+  #   @product = Product.order(sort_column + " " + sort_direction)
+  #   @product = Product.all
+  #   if params[:search]
+  #   @product = Product.search(params[:search]).order("created_at DESC")
+  # else
+  #   @product = Product.all.order('created_at DESC')
+  # end
 
+  @user = current_user
+    # @product = current_user.product
   # @search = Product.search(params[:q])
   # @products = @search.result
   # @search.build_condition if @search.conditions.empty?
@@ -39,6 +46,7 @@ class ProductController < ApplicationController
 #   Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
 # end
   def home
+    
     @product = Product.order(sort_column + " " + sort_direction)
 
      # @products = Product.order(params[:sort] + ' ' + params[:direction])
@@ -55,6 +63,7 @@ class ProductController < ApplicationController
   end
 
   def create
+     @category = Category.all
     @product= Product.new(product_params)
     respond_to do |format|
       if @product.save
@@ -129,7 +138,7 @@ class ProductController < ApplicationController
 
     def product_params
       # params.require(:product).permit(:name, :Description, :price, :category_id)
-      params.permit(:name, :Description, :price, :category_id)
+      params.permit(:name, :Description, :price, :category_id, :user_id)
 
     end
 end

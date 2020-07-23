@@ -28,6 +28,7 @@ gem 'geocoder'
 # gem 'pg_search'
 #pg 
  gem 'pg'
+ gem 'pg_search'
 
 # gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 # gem 'jquery-rails'

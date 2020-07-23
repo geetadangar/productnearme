@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
+<%= form_tag(product_index_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= submit_tag "Search" %>
+<% end %>
 <style>
 body {
       background: aliceblue;
@@ -29,8 +33,10 @@ body {
   </thead>
 
   <tbody>
-    <%# @product.each do |product| #Product.all.each do |product|%>
-   <% for product in @product %>
+    <%# @product.each do |product| %>
+    <% if @product.present? %>
+    <% Product.all.each do |product|%>
+   <%# for product in @product %>
       <tr>
         <td><%= product.name %></td>
         <td><%= product.Description %></td>
@@ -42,6 +48,7 @@ body {
         <!-- <td><%# link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
         <td><%= button_to 'Destroy', product_path(product), method: :delete %></td>
         </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>

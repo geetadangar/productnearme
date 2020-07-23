@@ -1,5 +1,18 @@
 class Product < ApplicationRecord
   belongs_to :category
+  belongs_to :user
+
+def self.search(search)
+  # where("name iLIKE ?", "%#{search}%") 
+  # where("Description iLIKE ?", "%#{search}%")
+  where("name || Description || price iLIKE ?", "%#{search}%")
+end
+  # def category_name
+  #   category.try(name)
+  # end
+  # def category_name=(name)
+  #   self.category = category.find_by_name(name) if name.present?
+  #   end
   # def self.ransackable_attributes(auth_object = nil)
   #   %w(name description)
   # end
