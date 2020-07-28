@@ -33,9 +33,10 @@ body {
   </thead>
 
   <tbody>
-    <%# @product.each do |product| %>
-    <% if @product.present? %>
-    <% Product.all.each do |product|%>
+    <% @product.each_with_index do |product, index| %>
+    <%#if @product.present? %>
+    <%# @images.each_with_index do |product, index| %>
+    <%# Product.all.each do |product|%>
    <%# for product in @product %>
       <tr>
         <td><%= product.name %></td>
@@ -49,7 +50,7 @@ body {
         <td><%= button_to 'Destroy', product_path(product), method: :delete %></td>
         </tr>
     <% end %>
-    <% end %>
+    <%# end %>
   </tbody>
 </table>
 

@@ -1,12 +1,19 @@
 class Product < ApplicationRecord
   belongs_to :category
-  belongs_to :user
+   belongs_to :user
+   def read?(user)
+    if self.users.ids.include? user.id
+      'read'
+    else
+      'unread'
+    end
+ end
 
-def self.search(search)
-  # where("name iLIKE ?", "%#{search}%") 
-  # where("Description iLIKE ?", "%#{search}%")
-  where("name || Description || price iLIKE ?", "%#{search}%")
-end
+  def self.search(search)
+    # where("name iLIKE ?", "%#{search}%") 
+    # where("Description iLIKE ?", "%#{search}%")
+    where("name || Description || price iLIKE ?", "%#{search}%")
+  end
   # def category_name
   #   category.try(name)
   # end

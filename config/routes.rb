@@ -7,6 +7,7 @@ Rails.application.routes.draw do
  get "/method1(/:id)", to: "product#method1", as: :method1
  get "/index(/:id)", to: "product#index", as: :index
  get "/home(/:id)", to: "product#home", as: :home
+ # get 'current_user' => "products#current_user"
  # match 'search(/:search)', :to => 'product#search', :as => :search, via: [:get, :post]
   # post "/search", to: "product#search", as: :search
 
