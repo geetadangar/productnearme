@@ -88,7 +88,7 @@ class ProductController < ApplicationController
   def home
     @product = current_user.products
     @product = Product.order(sort_column + " " + sort_direction)
-	 # @product = Product.search(params[:search])
+	   #@product = Product.search(params[:search])
     @category = Category.all
   end
 
@@ -151,6 +151,17 @@ class ProductController < ApplicationController
    #        @product = Product.search(params[:search].split("=").last)
    #        respond_to :js
    #    end
+    def search
+    if params[:search].blank?  
+    redirect_to(product_index_path, notice: "Empty field!") and return  
+  else  
+    @parameter = params[:search].downcase 
+    @results = Product.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+    @result = Product.all.where("lower(description) LIKE :search", search: "%#{@parameter}%")
+
+    # @results = Product.all.where("lower(name) LIKE :search", search: @parameter)  
+  end  
+  end
    def method1
 
    end
