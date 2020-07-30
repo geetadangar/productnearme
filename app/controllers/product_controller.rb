@@ -7,7 +7,8 @@ class ProductController < ApplicationController
      
     
  def index
-    @product = current_user.products
+      @product = current_user.products.order(sort_column + " " + sort_direction)
+    # @product = current_user.products
 
    # @product = current_user.products.build
    # @product = Product.find(params[:id])
@@ -18,9 +19,9 @@ class ProductController < ApplicationController
 #   Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
 # end
   def home
-    @product = current_user.products
+    @product = current_user.products.order(sort_column + " " + sort_direction)
     # @product = current_user.products
-    @product = Product.order(sort_column + " " + sort_direction)
+    # @product = Product.order(sort_column + " " + sort_direction)
 	   #@product = Product.search(params[:search])
     @category = Category.all
   end

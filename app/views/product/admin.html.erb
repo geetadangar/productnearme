@@ -73,13 +73,13 @@ body {
     <%# submit_tag "Search", name: nil %>
   </p> -->
 <%# end %>
-<%# form_tag product_index_path, :method => 'get', :id => "products_search" do %>
+<%= form_tag product_index_path, :method => 'get', :id => "products_search" do %>
   <p>
-    <%# text_field_tag :search, params[:search],placeholder: 'Search your products' %>
-    <%# submit_tag "Search", :name => nil %>
+    <%= text_field_tag :search, params[:search],placeholder: 'Search your products' %>
+    <%= submit_tag "Search", :name => nil %>
   </p>
   <!-- <div id="product"><%# render 'product' %></div> -->
-<%# end %>
+<% end %>
 
 
 <%# form_tag product_index_path, :method => :post, :id => "SearchForm" do %>
