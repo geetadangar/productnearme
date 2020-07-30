@@ -85,11 +85,14 @@
     </p>
      <div id="product"><%# render 'product' %></div> -->
   <%# end %>
-  <%= form_tag product_index_path, :method => 'get', :id => "products_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search],placeholder: 'Search your products' %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
+  <%= form_tag(search_page_path, :method => "get",   
+    class: 'navbar-form navbar-left') do %>  
+  <div class="input-group">  
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    <div class="input-group-btn">  
+      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+    </div>  
+  </div>  
   <!-- <div id="product"><%# render 'product' %></div> -->
   <% end %>
   <%# f.collection_select :player1, Player.order('plays DESC'), :id, :name %>

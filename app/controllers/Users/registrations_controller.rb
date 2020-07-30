@@ -9,6 +9,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  def index
+    if params[:search].present?
+    # @locations = Location.near(params[:search], 50, :order => :distance)
+    location_info = request.location
+
+    @locations = Location.near([location_info.latitude, location_info.longitude], 50)
+  else
+    @locations = Location.all
+  end
+    @locations = Location.all
+  end
+
 
   # GET /resource/sign_up
   # def new

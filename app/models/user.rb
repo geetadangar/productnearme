@@ -7,4 +7,10 @@ class User < ApplicationRecord
          geocoded_by :address
 	     after_validation :geocode, :if => :address_changed?
          has_many :products
+         def self.current
+    Thread.current[:user]
+  end
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
 end

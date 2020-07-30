@@ -5,7 +5,10 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     if params[:search].present?
-    @locations = Location.near(params[:search], 50, :order => :distance)
+    # @locations = Location.near(params[:search], 50, :order => :distance)
+    location_info = request.location
+
+    @locations = Location.near([location_info.latitude, location_info.longitude], 50)
   else
     @locations = Location.all
   end
