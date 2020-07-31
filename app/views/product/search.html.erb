@@ -1,8 +1,11 @@
 <h3>Search Result</h3>  
 
-    <% @results.each do |result| %>  
-        <%= result.name %><br> 
+    <%# @results.each do |result| %>  
+        <%# result.name %><br> 
         
-    <% end %>
+    <%# end %>
 
-   
+   <h3>Search Result</h3>  
+    <% @results.each do |result| %>  
+        <%= result.price %> <%= result.descripton %>  <%= result.name %><br>  
+    <% end %>

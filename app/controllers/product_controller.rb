@@ -2,14 +2,33 @@ class ProductController < ApplicationController
 	 before_action :set_product, only: [:show, :edit, :update, :destroy]
 	  helper_method :sort_column, :sort_direction
     
-      before_action :set_current_user
+      
       skip_before_action :verify_authenticity_token
      
     
  def index
-      @product = current_user.products.order(sort_column + " " + sort_direction)
-    # @product = current_user.products
 
+  # @product = Product.search(params[:search])
+
+  # if params[:search]
+  #   @product = Product.find(:all, :conditions => ['name LIKE ?', "%#{params[search]}%"])
+  # else
+  #        @product = current_user.products.order(sort_column + " " + sort_direction)
+
+  # end
+
+
+  # @search = params["search"]
+  #   if @search.present?
+  #     @name = @search["name"]
+  #     @product = Product.where("name ILIKE ?", "%#{@name}%")
+
+  #     @product = Product.where(name: @name)
+  #   end
+      # @results = Product.all.where("lower(name) LIKE :search", search: @parameter)
+
+     # @product = current_user.products.search(params[:search])
+      @product = current_user.products.order(sort_column + " " + sort_direction)
    # @product = current_user.products.build
    # @product = Product.find(params[:id])
 
@@ -20,7 +39,7 @@ class ProductController < ApplicationController
 # end
   def home
     @product = current_user.products.order(sort_column + " " + sort_direction)
-    # @product = current_user.products
+  
     # @product = Product.order(sort_column + " " + sort_direction)
 	   #@product = Product.search(params[:search])
     @category = Category.all
@@ -82,14 +101,13 @@ class ProductController < ApplicationController
     redirect_to(product_index_path, notice: "Empty field!") and return  
   else  
     @parameter = params[:search].downcase 
-    @results = Product.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
-    @result = Product.all.where("lower(description) LIKE :search", search: "%#{@parameter}%")
-
-    # @results = Product.all.where("lower(name) LIKE :search", search: @parameter)  
-  end  
+    @results = Product.all.where("lower(name) LIKE :search OR lower(price) LIKE :search OR  lower(descripton) LIKE :search", search: "%#{@parameter}%")
+   end  
   end
+#   def self.search(search)  
+#    where("lower(stores.name) LIKE :search OR lower(cars.name) LIKE :search", search: "%#{search.downcase}%").uniq   
+# end
    def method1
-
    end
   
   private
@@ -119,7 +137,7 @@ class ProductController < ApplicationController
 
     def product_params
       # params.require(:product).permit(:name, :Description, :price, :category_id)
-      params.permit(:name, :Description, :price, :category_id)
+      params.permit(:name, :descripton, :price, :category_id)
 
     end
 end

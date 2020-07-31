@@ -1,19 +1,26 @@
 class Product < ApplicationRecord
   belongs_to :category
    belongs_to :user
-   def read?(user)
-    if self.users.ids.include? user.id
-      'read'
-    else
-      'unread'
-    end
- end
+  
 
-  def self.search(search)
-    # where("name iLIKE ?", "%#{search}%") 
-    # where("Description iLIKE ?", "%#{search}%")
-    where("name || Description || price iLIKE ?", "%#{search}%")
-  end
+# def self.search(search)
+#   if search
+#     find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+
+#   else
+#     # find(:all)
+#   end
+# end
+# def self.search(search)
+#  if search
+#   find(:all, :conditions => ['name LIKE ? || Description LIKE ? || price LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+#  else
+#    find(:all)
+#   # current_item = product_name.build(product_id: product_id)
+ 
+#  end
+# end
+
   # def category_name
   #   category.try(name)
   # end
