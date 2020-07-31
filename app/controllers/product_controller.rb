@@ -101,7 +101,7 @@ class ProductController < ApplicationController
     redirect_to(product_index_path, notice: "Empty field!") and return  
   else  
     @parameter = params[:search].downcase 
-    @results = Product.all.where("lower(name) LIKE :search OR lower(price) LIKE :search OR  lower(descripton) LIKE :search", search: "%#{@parameter}%")
+    @results = current_user.products.where("lower(name) LIKE :search OR lower(price) LIKE :search OR  lower(descripton) LIKE :search", search: "%#{@parameter}%")
    end  
   end
 #   def self.search(search)  
