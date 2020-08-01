@@ -2,8 +2,9 @@ class ProductController < ApplicationController
 	 before_action :set_product, only: [:show, :edit, :update, :destroy]
 	  helper_method :sort_column, :sort_direction
     
-      
-      skip_before_action :verify_authenticity_token
+      # before_action :find_user_object,except:[:create]
+
+      # skip_before_action :verify_authenticity_token
      
     
  def index
@@ -28,7 +29,8 @@ class ProductController < ApplicationController
       # @results = Product.all.where("lower(name) LIKE :search", search: @parameter)
 
      # @product = current_user.products.search(params[:search])
-      @product = current_user.products.order(sort_column + " " + sort_direction)
+     # @product = Product.all
+       @product = current_user.products.order(sort_column + " " + sort_direction)
    # @product = current_user.products.build
    # @product = Product.find(params[:id])
 
@@ -38,7 +40,7 @@ class ProductController < ApplicationController
 #   Product.column_names.include?(params[:sort]) ? params[:sort] : "name"
 # end
   def home
-    @product = current_user.products.order(sort_column + " " + sort_direction)
+      @product = current_user.products.order(sort_column + " " + sort_direction)
   
     # @product = Product.order(sort_column + " " + sort_direction)
 	   #@product = Product.search(params[:search])
@@ -109,6 +111,12 @@ class ProductController < ApplicationController
 # end
    def method1
    end
+   def send_email
+    UsermailerMailer.send_user_mail.delivery.now
+    # @salary = Salary.find_by_id(params[:id])
+    # @email =  @salary.salary_details["email"]
+  
+  end
   
   private
   def set_product

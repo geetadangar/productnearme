@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # devise_for :users
  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords" }
  # root 'product#index'
- root 'product#method1'
+ root 'product#index'
  get "/method1(/:id)", to: "product#method1", as: :method1
  get "/index(/:id)", to: "product#index", as: :index
  get "/home(/:id)", to: "product#home", as: :home

@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 <%# current_user.name %>
 <style>
   body {
@@ -272,3 +273,93 @@
 </html>
 <span class="nav-item"><span class="nav-text"><i class="icp-flyout-flag icp-flyout-flag-in"></i>You are shopping on ProductNearMe.in</span></span>
 <%# render @product.desc %>
+
+<%= form_tag(search_page_path, :method => "get",   
+    class: 'navbar-form navbar-left') do %>  
+  <div class="input-group">  
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    <div class="input-group-btn">  
+      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+    </div>  
+  </div>  
+<% end %>
+<style>
+body {
+      background: aliceblue;
+    }
+  </style>
+
+<b><h1 align="center">Product</h1></b>
+<div align="right">
+<%= link_to "logout", destroy_user_session_path %>
+</div>
+<br/>
+<div class="sort">
+  <div class="sort-by">
+    <h3 id="sort"><label>sort:</label><span> |</span>
+      <span><%= sortable "price" %><span class="caret"></span></span></h3>  
+  </div>
+  </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>description</th>
+      <th><%= sortable "price" %></th>
+      <th>category</th>
+      <th>user</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product.each_with_index do |product, index| %>
+    <%#if @product.present? %>
+    <%# @images.each_with_index do |product, index| %>
+    <%# Product.all.each do |product|%>
+   <%# for product in @product %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.descripton %></td>
+        <td class="price"><%= number_to_currency(product.price) %></td>
+        <%# if current_user == @product.user %>
+
+        <td><%= product.category.name %></td>
+         <td><%= product.user.email %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <!-- <td><%# link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <td><%= button_to 'Destroy', product_path(product), method: :delete %></td>
+        </tr>
+    <% end %>
+    <%# end %>
+  </tbody>
+</table>
+
+<br>
+<%# form_tag product_index_path, method: :get do %>
+  <!-- <p>
+    <%# text_field_tag :query, params[:query] %>
+    <%# submit_tag "Search", name: nil %>
+  </p> -->
+<%# end %>
+<%# form_tag product_index_path, :method => 'get', :id => "products_search" do %>
+  <p>
+    <%# text_field_tag :search, params[:search],placeholder: 'Search your products' %>
+    <%# submit_tag "Search", :name => nil %>
+  </p>
+  <!-- <div id="product"><%# render 'product' %></div> -->
+<%# end %>
+
+
+<%# form_tag product_index_path, :method => :post, :id => "SearchForm" do %>
+    <%# text_field_tag :search, params[:search], placeholder: 'Search your favourite products or brands', :autocomplete => :off, :id => 'SearchSearch'  %> 
+    <%# image_submit_tag('nav_bar/search.png', title: 'Search', class: 'search_submit', data: { "placement" => "bottom" }) %>
+    <%# submit_tag "Search", :name => nil %>
+<%# end %>  
+<br />
+<%= link_to 'create new product',new_product_path%>
+
+
+
